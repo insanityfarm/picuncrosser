@@ -9,7 +9,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <td className="cell" />
+            <div className="cell" />
         );
     }
 

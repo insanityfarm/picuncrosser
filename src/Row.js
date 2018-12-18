@@ -12,11 +12,11 @@ class Row extends Component {
 
     render() {
         return (
-            <tr>
+            <div>
                 <RowHeader header={this.props.header} />
                 {this.props.cells.map((status, i) => <Cell key={'cell-'+this.props.num+'-'+i} />)}
-                <RowFooter />
-            </tr>
+                <RowFooter key={'rowfooter-'+this.props.num} />
+            </div>
         );
     }
 

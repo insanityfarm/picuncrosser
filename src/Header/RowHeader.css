@@ -1,4 +1,5 @@
 .Header.RowHeader {
-    padding-left: 6px;
-    width: 1px;
+    padding: 0 6px;
+    text-align: right;
+    vertical-align: middle;
 }

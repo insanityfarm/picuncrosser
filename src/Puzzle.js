@@ -25,7 +25,7 @@ class Puzzle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...samples.jackolantern // change this to pre-load different puzzles (temp method)
+            ...samples.spray // change this to pre-load different puzzles (temp method)
         };
         this.state.grid = this.prepareGrid();
     }
@@ -33,27 +33,25 @@ class Puzzle extends Component {
     render() {
         // https://www.w3.org/WAI/tutorials/tables/two-headers/#table-with-header-cells-in-the-top-row-and-first-column
         return (
-            <table className="Puzzle">
-                <tbody>
-                    <tr>
-                        <td />
-                        {this.state.cols.map((header, i) => (
-                            <ColHeader header={header} key={'colheader-'+i} />
-                        ))}
-                        <RowFooter />
-                    </tr>
-                    {this.state.rows.map((header, i) => (
-                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
+            <div className="Puzzle">
+                <div>
+                    <div />
+                    {this.state.cols.map((header, i) => (
+                        <ColHeader header={header} key={'colheader-'+i} />
                     ))}
-                    <tr>
-                        <td />
-                        {this.state.cols.map((header, i) => (
-                            <ColFooter key={'colfooter-'+i} />
-                        ))}
-                        <RowFooter />
-                    </tr>
-                </tbody>
-            </table>
+                    <RowFooter />
+                </div>
+                {this.state.rows.map((header, i) => (
+                    <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
+                ))}
+                <div>
+                    <div />
+                    {this.state.cols.map((header, i) => (
+                        <ColFooter key={'colfooter-'+i} />
+                    ))}
+                    <RowFooter />
+                </div>
+            </div>
         );
     }
 

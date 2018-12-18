@@ -1,5 +1,5 @@
 .Footer {
-    opacity: 0;
+    opacity: 0.08;
     cursor: pointer;
 }
 
@@ -7,16 +7,22 @@
     opacity: 1;
 }
 
-/*.Footer > span {*/
+/* add new control (plus) */
 .Footer:after {
     content: "+";
     display: block;
-    width: 24px;
-    height: 24px;
+    width: calc(1.65em + 2px);
+    height: calc(1.65em + 2px);
     position: absolute;
     box-sizing: border-box;
-    background: #4da3ff;
-    color: #ffffff;
+    background-color: transparent;
+    color: #000000;
     text-align: center;
-    line-height: 25px;
+    line-height: calc(1.65em + 2px);
+    border-radius: calc(1.65em / 2);
+}
+
+.Footer:hover:after {
+    background-color: #4da3ff;
+    color: #ffffff;
 }
