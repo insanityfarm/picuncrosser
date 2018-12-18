@@ -1,0 +1,29 @@
+.Puzzle {
+    margin: 0 auto;
+    border-collapse: collapse;
+    /*box-shadow: 0 0 30px 0 rgba(34, 84, 127, 0.25);*/
+    /*transition: box-shadow 350ms;*/
+}
+
+.Puzzle.solved {
+    box-shadow: 0 0 40px 10px rgba(0,150,0,0.15);
+}
+
+.Puzzle.unsolvable{
+    box-shadow: 0 0 30px 0 rgba(177, 5, 5, 0.6);
+}
+
+th {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: monospace;
+}
+
+th[scope=row] {
+    text-align: right;
+    padding-right: 4px;
+}
+
+.Puzzle tr {
+    position: relative;
+}

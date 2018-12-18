@@ -1,0 +1,15 @@
+.cell {
+    border: 1px solid #eeeeee;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.cell.active {
+    background-color: #8e644f;
+}
+
+.cell:hover {
+    /*box-shadow: 0 0 8px 0 rgba(34, 84, 127, 0.25);*/
+    box-shadow: 0px 0px 0px 0.5px rgba(34, 84, 127, 0.75);
+}

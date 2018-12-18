@@ -1,0 +1,22 @@
+.Footer {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.Footer:hover {
+    opacity: 1;
+}
+
+/*.Footer > span {*/
+.Footer:after {
+    content: "+";
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    box-sizing: border-box;
+    background: #4da3ff;
+    color: #ffffff;
+    text-align: center;
+    line-height: 25px;
+}

@@ -1,0 +1,9 @@
+.Header {
+    transition: background-color 50ms;
+    cursor: pointer;
+}
+
+.Header:hover {
+    transition: background-color 0ms;
+    background-color: #fff6af;
+}

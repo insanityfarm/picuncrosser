@@ -1,0 +1,16 @@
+.Footer.RowFooter {
+    position: absolute;
+    bottom: -0.5px;
+    left: calc(100%);
+    right: -20px;
+    border-bottom: 1px solid #4da3ff;
+}
+
+.Footer.RowFooter:hover {
+    left: 0;
+}
+
+.Footer.RowFooter:after {
+    top: -21px;
+    right: -4px;
+}
