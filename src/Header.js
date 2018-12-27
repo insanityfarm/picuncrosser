@@ -10,7 +10,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className={this.state.className}>{this.renderHeader()}</div>
+            <th scope="row" className={this.state.className}>{this.renderHeader()}</th>
         );
     }
 

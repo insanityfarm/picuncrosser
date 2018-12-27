@@ -1,13 +1,9 @@
 .Puzzle {
     margin: 0 auto;
     border-collapse: collapse;
-    display: table;
     font-size: 14px;
     font-weight: normal;
-    font-family: monospace;
     position: relative;
-    /*box-shadow: 0 0 30px 0 rgba(34, 84, 127, 0.25);*/
-    /*transition: box-shadow 350ms;*/
 }
 
 .Puzzle.solved {
@@ -18,13 +14,8 @@
     box-shadow: 0 0 30px 0 rgba(177, 5, 5, 0.6);
 }
 
-.Puzzle > div {
-    display: table-row;
+.Puzzle tr {
     position: relative;
     /* hack to fix absolute positions of table children */
     transform: scale(1);
-}
-
-.Puzzle > div > div {
-    display: table-cell;
 }

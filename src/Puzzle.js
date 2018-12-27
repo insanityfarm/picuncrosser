@@ -25,7 +25,7 @@ class Puzzle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...samples.spray // change this to pre-load different puzzles (temp method)
+            ...samples.jackolantern // change this to pre-load different puzzles (temp method)
         };
         this.state.grid = this.prepareGrid();
     }
@@ -33,25 +33,27 @@ class Puzzle extends Component {
     render() {
         // https://www.w3.org/WAI/tutorials/tables/two-headers/#table-with-header-cells-in-the-top-row-and-first-column
         return (
-            <div className="Puzzle">
-                <div>
-                    <div />
-                    {this.state.cols.map((header, i) => (
-                        <ColHeader header={header} key={'colheader-'+i} />
+            <table className="Puzzle">
+                <tbody>
+                    <tr>
+                        <th />
+                        {this.state.cols.map((header, i) => (
+                            <ColHeader header={header} key={'colheader-'+i} />
+                        ))}
+                        <RowFooter key={'rowfooter-0'} />
+                    </tr>
+                    {this.state.rows.map((header, i) => (
+                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
                     ))}
-                    <RowFooter />
-                </div>
-                {this.state.rows.map((header, i) => (
-                    <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
-                ))}
-                <div>
-                    <div />
-                    {this.state.cols.map((header, i) => (
-                        <ColFooter key={'colfooter-'+i} />
-                    ))}
-                    <RowFooter />
-                </div>
-            </div>
+                    <tr className={'colfooter-row'} >
+                        <th />
+                        {this.state.cols.map((header, i) => (
+                            <ColFooter key={'colfooter-'+i} />
+                        ))}
+                        <ColFooter key={'colfooter-'+this.state.cols.length} />
+                    </tr>
+                </tbody>
+            </table>
         );
     }
 

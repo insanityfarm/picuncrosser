@@ -1,6 +1,8 @@
 .Header {
     transition: background-color 50ms;
     cursor: pointer;
+    font-family: monospace;
+    font-weight: normal;
 }
 
 .Header:hover {
