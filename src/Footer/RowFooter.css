@@ -6,7 +6,7 @@
 }
 
 .Footer.RowFooter:hover {
-    left: 0;
+    width: calc(((1.65em + 3px) * var(--number-of-cols)) + 7px);
     border-bottom: 1px solid #4da3ff;
 }
 

@@ -7,7 +7,7 @@
 
 .Footer.ColFooter:hover {
     display: block;
-    height: calc(((1.65em + 3px) * 10) + (1.65em + 6px));
+    height: calc(((1.65em + 3px) * var(--number-of-rows)) + (1.65em + 6px));
     border-left: 1px solid #4da3ff;
 }
 
@@ -18,9 +18,9 @@
 
 /* TODO: Create a new ColFooterRow component class (maybe better named than that) */
 .Puzzle tr.colfooter-row {
-    height: calc(1.65em + 7px);
+    height: calc(1.65em + 6px);
     pointer-events: none;
 }
 .Puzzle tr.colfooter-row:hover {
-    transform: translateY(calc((1.65em + 3px) * -10));
+    transform: translateY(calc(((1.65em + 3px) * (var(--number-of-rows) * -1)) - 1px));
 }

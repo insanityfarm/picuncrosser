@@ -33,7 +33,7 @@ class Puzzle extends Component {
     render() {
         // https://www.w3.org/WAI/tutorials/tables/two-headers/#table-with-header-cells-in-the-top-row-and-first-column
         return (
-            <table className="Puzzle">
+            <table className="Puzzle" style={{'--number-of-rows': + this.state.rows.length, '--number-of-cols': + this.state.cols.length}}>
                 <thead>
                     <tr>
                         <th />
