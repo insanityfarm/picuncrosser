@@ -34,7 +34,7 @@ class Puzzle extends Component {
         // https://www.w3.org/WAI/tutorials/tables/two-headers/#table-with-header-cells-in-the-top-row-and-first-column
         return (
             <table className="Puzzle">
-                <tbody>
+                <thead>
                     <tr>
                         <th />
                         {this.state.cols.map((header, i) => (
@@ -42,9 +42,13 @@ class Puzzle extends Component {
                         ))}
                         <RowFooter key={'rowfooter-0'} />
                     </tr>
+                </thead>
+                <tbody>
                     {this.state.rows.map((header, i) => (
                         <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
                     ))}
+                </tbody>
+                <tfoot>
                     <tr className={'colfooter-row'} >
                         <th />
                         {this.state.cols.map((header, i) => (
@@ -52,7 +56,7 @@ class Puzzle extends Component {
                         ))}
                         <ColFooter key={'colfooter-'+this.state.cols.length} />
                     </tr>
-                </tbody>
+                </tfoot>
             </table>
         );
     }

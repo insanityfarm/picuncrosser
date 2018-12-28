@@ -11,7 +11,7 @@
     border-left: 1px solid #4da3ff;
 }
 
-.Footer.ColFooter:after {
+.Footer.ColFooter::after {
     bottom: 0;
     left: calc((1.65em / -2) - 2px);
 }

@@ -9,7 +9,7 @@
 }
 
 /* add new control (plus) */
-.Footer:after {
+.Footer::after {
     content: "+";
     display: block;
     width: calc(1.65em + 2px);
@@ -24,7 +24,7 @@
     pointer-events: all;
 }
 
-.Footer:hover:after {
+.Footer:hover::after {
     background-color: #4da3ff;
     color: #ffffff;
 }

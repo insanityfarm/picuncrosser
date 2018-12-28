@@ -10,7 +10,7 @@
     border-bottom: 1px solid #4da3ff;
 }
 
-.Footer.RowFooter:after {
+.Footer.RowFooter::after {
     right: -1.65em;
     bottom: calc(1.65em / -2);
 }
