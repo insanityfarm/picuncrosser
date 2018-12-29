@@ -12,15 +12,15 @@
 .Footer::after {
     content: "+";
     display: block;
-    width: calc(1.65em + 2px);
-    height: calc(1.65em + 2px);
+    width: calc(var(--tile-size) + 2px);
+    height: calc(var(--tile-size) + 2px);
     position: absolute;
     box-sizing: border-box;
     background-color: transparent;
     color: #000000;
     text-align: center;
-    line-height: calc(1.65em + 2px);
-    border-radius: calc(1.65em / 2);
+    line-height: calc(var(--tile-size) + 2px);
+    border-radius: calc(var(--tile-size) / 2);
     pointer-events: all;
 }
 

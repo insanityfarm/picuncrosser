@@ -1,26 +1,36 @@
 .Footer.ColFooter {
-    position: relative;
-    bottom: -1px;
-    height: 1px;
+    position: absolute;
     overflow: visible;
+    width: calc(var(--tile-size) + 3px);
+    height: calc(var(--tile-size) + 2px);
+    left: calc(var(--column) * (var(--tile-size) + 3px));
+    bottom: 0;
 }
 
 .Footer.ColFooter:hover {
     display: block;
-    height: calc(((1.65em + 3px) * var(--number-of-rows)) + (1.65em + 6px));
+    height: 100%;
     border-left: 1px solid #4da3ff;
 }
 
 .Footer.ColFooter::after {
     bottom: 0;
-    left: calc((1.65em / -2) - 2px);
+    left: calc((var(--tile-size) / -2) - 2px);
 }
 
 /* TODO: Create a new ColFooterRow component class (maybe better named than that) */
 .Puzzle tr.colfooter-row {
-    height: calc(1.65em + 6px);
-    pointer-events: none;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: calc(var(--tile-size) + 3px);
 }
 .Puzzle tr.colfooter-row:hover {
-    transform: translateY(calc(((1.65em + 3px) * (var(--number-of-rows) * -1)) - 1px));
+    height: auto;
+    top: 0;
+}
+
+.Puzzle tr.colfooter-row th {
+    display: none;
 }

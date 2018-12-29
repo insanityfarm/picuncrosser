@@ -1,3 +1,12 @@
+.Puzzle tfoot {
+    position: absolute;
+    right: calc(-3px - var(--tile-size));
+    bottom: calc(-6px - var(--tile-size));
+    width: calc((var(--tile-size) + 3px) * (var(--number-of-cols) + 1));
+    top: 0;
+    pointer-events: none;
+}
+
 .Footer.RowFooter {
     position: absolute;
     bottom: -1px;
@@ -6,11 +15,11 @@
 }
 
 .Footer.RowFooter:hover {
-    width: calc(((1.65em + 3px) * var(--number-of-cols)) + 7px);
+    left: 0;
     border-bottom: 1px solid #4da3ff;
 }
 
 .Footer.RowFooter::after {
-    right: -1.65em;
-    bottom: calc(1.65em / -2);
+    right: calc(-1 * var(--tile-size));
+    bottom: calc(var(--tile-size) / -2);
 }

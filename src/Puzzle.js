@@ -49,12 +49,12 @@ class Puzzle extends Component {
                     ))}
                 </tbody>
                 <tfoot>
-                    <tr className={'colfooter-row'} >
+                    <tr className={'colfooter-row'}>
                         <th />
                         {this.state.cols.map((header, i) => (
-                            <ColFooter key={'colfooter-'+i} />
+                            <ColFooter key={'colfooter-'+i} col={i} />
                         ))}
-                        <ColFooter key={'colfooter-'+this.state.cols.length} />
+                        <ColFooter key={'colfooter-'+this.state.cols.length} col={this.state.cols.length} />
                     </tr>
                 </tfoot>
             </table>

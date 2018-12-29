@@ -13,6 +13,7 @@ class ColHeader extends Header {
         return super.render();
     }
 
+    /* TODO: Visual fix for 3+ digit numbers in column headers */
     renderHeader() {
         return this.props.header.join('\n');
     }

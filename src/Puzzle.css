@@ -4,6 +4,7 @@
     font-size: 14px;
     font-weight: normal;
     position: relative;
+    --tile-size: 1.65em;
 }
 
 .Puzzle.solved {
