@@ -9,3 +9,23 @@
     transition: background-color 0ms;
     background-color: #fff6af;
 }
+
+.Header::before {
+    content: 'x';
+    --x-size: calc(var(--tile-size) / 2.5);
+    font-size: 0;
+    display: block;
+    position: absolute;
+    background: linear-gradient(to top right, rgba(221,28,28,0) 42%,rgba(221,28,28,1) 43%,rgba(221,28,28,1) 57%,rgba(221,28,28,0) 58%),
+                linear-gradient(to bottom right, rgba(221,28,28,0) 42%,rgba(221,28,28,1) 43%,rgba(221,28,28,1) 57%,rgba(221,28,28,0) 58%);
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    width: var(--x-size);
+    height: var(--x-size);
+    border: calc(((var(--tile-size) + 3px) / 2) - (var(--x-size) / 2)) solid transparent;
+    opacity: 0;
+}
+
+.Header:hover::before {
+    opacity: 1;
+}

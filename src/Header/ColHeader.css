@@ -1,7 +1,14 @@
 .Header.ColHeader {
+    position: relative;
     vertical-align: bottom;
     max-width: var(--tile-size);
-    padding: 0.4em 0 0.2em;
+    padding: calc(var(--tile-size) * 1.2) 0 0.2rem;
     text-align: center;
     white-space: pre-wrap;
+}
+
+.Header.ColHeader::before {
+    left: 0;
+    right: 0;
+    top: 0;
 }

@@ -19,8 +19,8 @@
     background-color: transparent;
     color: #000000;
     text-align: center;
-    line-height: calc(var(--tile-size) + 2px);
-    border-radius: calc(var(--tile-size) / 2);
+    line-height: var(--tile-size);
+    border-radius: calc((var(--tile-size) + 2px) / 2);
     pointer-events: all;
 }
 

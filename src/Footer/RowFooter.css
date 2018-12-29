@@ -15,7 +15,7 @@
 }
 
 .Footer.RowFooter:hover {
-    left: 0;
+    left: var(--tile-size);
     border-bottom: 1px solid #4da3ff;
 }
 

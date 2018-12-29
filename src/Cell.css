@@ -1,5 +1,5 @@
 .cell {
-    border: 1px solid #eeeeee;
+    border: var(--tile-border);
     width: var(--tile-size);
     height: var(--tile-size);
     cursor: pointer;
@@ -11,5 +11,4 @@
 
 .cell:hover {
     box-shadow: inset 0 0 0 2px rgba(34, 84, 127, 0.25);
-    /*border: 1px inset rgba(34, 84, 127, 0.75);*/
 }
