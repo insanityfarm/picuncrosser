@@ -4,8 +4,9 @@
     font-size: 14px;
     font-weight: normal;
     position: relative;
-    --tile-size: 1.65rem;
+    --tile-size: 28px; /* TODO: Fix the cross-browser issues encountered when using relative units here */
     --tile-border: 1px solid #eeeeee;
+    --tile-border-guide: 1px solid #bbbbbb;
 }
 
 .Puzzle.solved {

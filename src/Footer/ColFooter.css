@@ -1,8 +1,6 @@
 .Footer.ColFooter {
     position: absolute;
     overflow: visible;
-    width: calc(var(--tile-size) + 3px);
-    height: calc(var(--tile-size) + 2px);
     left: calc(var(--column) * (var(--tile-size) + 3px));
     bottom: 0;
 }

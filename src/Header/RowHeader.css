@@ -1,5 +1,5 @@
 .Header.RowHeader {
-    padding: 1px 0.4em 1px calc(var(--tile-size) * 1.2);
+    padding: 1px 0.4rem 1px calc(var(--tile-size) + 3px);
     text-align: right;
     vertical-align: middle;
     border-right: var(--tile-border);
@@ -9,4 +9,11 @@
     left: 0;
     top: 0;
     bottom: 0;
+}
+
+/* TODO: Assign a proper name / component for the number picker */
+.Header.RowHeader > div {
+    line-height: calc(1.65rem + 3px);
+    margin: -1px -0.4rem -1px 0;
+    padding: 0 0.4rem 0 0;
 }

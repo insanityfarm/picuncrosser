@@ -2,7 +2,7 @@
     position: relative;
     vertical-align: bottom;
     max-width: var(--tile-size);
-    padding: calc(var(--tile-size) * 1.2) 0 0.2rem;
+    padding: calc(var(--tile-size) * 1.2) 0 0 0;
     text-align: center;
     white-space: pre-wrap;
 }
@@ -11,4 +11,13 @@
     left: 0;
     right: 0;
     top: 0;
+}
+
+/* TODO: Assign a proper name / component for the number picker */
+.Header.ColHeader > div {
+    /*height: calc((var(--max-col-number-count) * 1.05em) + 0.4em);*/
+    vertical-align: bottom;
+    display: table-cell;
+    width: calc(var(--tile-size) + 3px);
+    padding: 0.2em 0;
 }

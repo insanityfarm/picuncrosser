@@ -2,7 +2,7 @@
     border: var(--tile-border);
     width: var(--tile-size);
     height: var(--tile-size);
-    cursor: pointer;
+    cursor: crosshair;
 }
 
 .cell.active {
@@ -11,4 +11,13 @@
 
 .cell:hover {
     box-shadow: inset 0 0 0 2px rgba(34, 84, 127, 0.25);
+}
+
+/* Guide lines are darker every 5th row or column (unless at the edge of the puzzle ) */
+tbody > tr:nth-of-type(5n):not(:last-of-type) .cell {
+    border-bottom: var(--tile-border-guide)
+}
+
+tbody > tr .cell:nth-of-type(5n):not(:nth-last-of-type(2)) {
+    border-right: var(--tile-border-guide)
 }
