@@ -15,7 +15,7 @@
 
 /* TODO: Assign a proper name / component for the number picker */
 .Header.ColHeader > div {
-    /*height: calc((var(--max-col-number-count) * 1.05em) + 0.4em);*/
+    height: calc((var(--max-col-number-count) * 1.05em) + 0.4em);
     vertical-align: bottom;
     display: table-cell;
     width: calc(var(--tile-size) + 3px);
