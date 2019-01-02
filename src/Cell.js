@@ -37,7 +37,6 @@ class Cell extends Component {
     }
 
     draw() {
-
         // CONDITIONS:
         // NO MODIFIER and NOT ACTIVE and NOT DISABLED
         //  active: true, disabled: false
@@ -47,15 +46,42 @@ class Cell extends Component {
         //  active: false, disabled: false
 
         let classes = this.state.classes;
-        if(!classes.disabled && !classes.active) {
-            classes.active      = !this.props.inputMode.isModifierActive;
-            classes.disabled    = this.props.inputMode.isModifierActive;
-        } else {
-            classes.active      = false;
-            classes.disabled    = false;
-        }
-        this.setState({classes: classes});
+        let drawMode = this.props.inputMode.drawMode;
 
+        if(typeof drawMode === 'undefined') {
+            if(!classes.disabled && !classes.active) {
+                drawMode = {
+                    active:     !this.props.inputMode.isModifierActive,
+                    disabled:   this.props.inputMode.isModifierActive
+                };
+            } else {
+                drawMode = {
+                    active:     false,
+                    disabled:   false
+                };
+            }
+            this.props.setDrawMode(drawMode);
+        }
+        //console.log(drawMode);
+
+        if(drawMode.disabled) {
+            classes.disabled = !classes.active;
+        } else {
+            if(!classes.disabled) {
+                classes.active = drawMode.active;
+                classes.disabled = false;
+            } else {
+                classes.disabled = drawMode.active;
+            }
+        }
+
+        // PROBLEMS OCCURRING:
+        //  Erasing a disabled cell then dragging to a non-disabled cell erases the non-disabled one too
+        //  Vice versa: Erasing a non-disabled cell then dragging to a disabled one erases both
+        // ONLY THE INITIAL TYPE SHOULD BE ERASED
+
+
+        this.setState({classes: classes});
     }
 }
 

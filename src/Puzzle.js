@@ -35,7 +35,13 @@ class Puzzle extends Component {
         this.state.maxColNumberCount = this.getMaxColNumberCount();
         this.state.inputMode = {
             isDrawing:          false,
-            drawMode:           'draw',
+            drawMode:           undefined, // object to indicate cells to draw on, and how to draw
+
+            // active: true,  disabled: false
+            // active: false, disabled: false
+            // active: false, disabled: true
+
+            direction:          undefined, // where true = vertical, false = horizontal, and undefined = not set
             isModifierActive:   false
         };
         this.handleMousedown    = this.handleMousedown.bind(this);
@@ -44,6 +50,7 @@ class Puzzle extends Component {
         this.handleKeydown      = this.handleKeydown.bind(this);
         this.handleKeyup        = this.handleKeyup.bind(this);
         this.updateStateObject  = this.updateStateObject.bind(this);
+        this.setDrawMode        = this.setDrawMode.bind(this);
     }
 
     componentDidMount() {
@@ -73,7 +80,7 @@ class Puzzle extends Component {
                 </thead>
                 <tbody>
                     {this.state.rows.map((header, i) => (
-                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} />
+                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} setDrawMode={this.setDrawMode} />
                     ))}
                 </tbody>
                 <tfoot>
@@ -124,6 +131,7 @@ class Puzzle extends Component {
     handleMouseup(e) {
         e.preventDefault();
         this.updateStateObject('inputMode', 'isDrawing', false);
+        this.setDrawMode(undefined);
     }
 
     handleMouseenter(e) {
@@ -140,6 +148,10 @@ class Puzzle extends Component {
         if(e.key === 'Shift') {
             this.updateStateObject('inputMode', 'isModifierActive', false);
         }
+    }
+
+    setDrawMode(drawMode) {
+        this.updateStateObject('inputMode', 'drawMode', drawMode);
     }
 
     updateStateObject(name, key, value) {
