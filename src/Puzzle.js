@@ -29,10 +29,33 @@ class Puzzle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...samples.soccer // change this to pre-load different puzzles (temp method)
+            ...samples.jackolantern // change this to pre-load different puzzles (temp method)
         };
         this.state.grid = this.prepareGrid();
         this.state.maxColNumberCount = this.getMaxColNumberCount();
+        this.state.inputMode = {
+            isDrawing:          false,
+            drawMode:           'draw',
+            isModifierActive:   false
+        };
+        this.handleMousedown    = this.handleMousedown.bind(this);
+        this.handleMouseup      = this.handleMouseup.bind(this);
+        this.handleMouseenter   = this.handleMouseenter.bind(this);
+        this.handleKeydown      = this.handleKeydown.bind(this);
+        this.handleKeyup        = this.handleKeyup.bind(this);
+        this.updateStateObject  = this.updateStateObject.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener('mouseup', this.handleMouseup, false);
+        window.addEventListener('keydown', this.handleKeydown, false);
+        window.addEventListener('keyup', this.handleKeyup, false);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('mouseup', this.handleMouseup);
+        window.removeEventListener('keydown', this.handleKeydown);
+        window.removeEventListener('keyup', this.handleKeyup);
     }
 
     render() {
@@ -50,7 +73,7 @@ class Puzzle extends Component {
                 </thead>
                 <tbody>
                     {this.state.rows.map((header, i) => (
-                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} />
+                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} />
                     ))}
                 </tbody>
                 <tfoot>
@@ -93,14 +116,46 @@ class Puzzle extends Component {
         return max;
     }
 
-    renderColHeaders() {
-        return (
-            <tr>
-                <td />
-                {this.state.cols.map((col, i) => <th scope="col">{col.join('\n')}</th>)}
+    handleMousedown(e) {
+        e.preventDefault();
+        this.updateStateObject('inputMode', 'isDrawing', true);
+    }
 
-            </tr>
-        );
+    handleMouseup(e) {
+        e.preventDefault();
+        this.updateStateObject('inputMode', 'isDrawing', false);
+    }
+
+    handleMouseenter(e) {
+        e.preventDefault();
+    }
+
+    handleKeydown(e) {
+        if(e.key === 'Shift') {
+            this.updateStateObject('inputMode', 'isModifierActive', true);
+        }
+    }
+
+    handleKeyup(e) {
+        if(e.key === 'Shift') {
+            this.updateStateObject('inputMode', 'isModifierActive', false);
+        }
+    }
+
+    updateStateObject(name, key, value) {
+        this.setState((prevState) => {
+            return {[name]: {...prevState[name], ...{[key]: value}}};
+        });
+    }
+
+    getHandlers() {
+        return {
+            mousedown:  this.handleMousedown,
+            mouseup:    this.handleMouseup,
+            mouseenter: this.handleMouseenter,
+            keydown:    this.handleKeydown,
+            keyup:      this.handleKeyup
+        };
     }
 
 }
