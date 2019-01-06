@@ -37,49 +37,41 @@ class Cell extends Component {
     }
 
     draw() {
-        // CONDITIONS:
-        // NO MODIFIER and NOT ACTIVE and NOT DISABLED
-        //  active: true, disabled: false
-        // MODIFIER and NOT ACTIVE and NOT DISABLED
-        //  active: false, disabled: true
-        // either ACTIVE or DISABLED (don't care about MODIFIER)
-        //  active: false, disabled: false
 
         let classes = this.state.classes;
         let drawMode = this.props.inputMode.drawMode;
 
         if(typeof drawMode === 'undefined') {
-            if(!classes.disabled && !classes.active) {
-                drawMode = {
-                    active:     !this.props.inputMode.isModifierActive,
-                    disabled:   this.props.inputMode.isModifierActive
-                };
-            } else {
-                drawMode = {
-                    active:     false,
-                    disabled:   false
-                };
-            }
+            drawMode = {
+                isSetting:  (!classes.disabled && !classes.active),
+                type:       this.props.inputMode.isModifierActive ? 'disabled' : 'active'
+            };
             this.props.setDrawMode(drawMode);
         }
-        //console.log(drawMode);
 
-        if(drawMode.disabled) {
-            classes.disabled = !classes.active;
-        } else {
-            if(!classes.disabled) {
-                classes.active = drawMode.active;
+        // TODO: Simplify this logic, there must be a way
+        if(classes.disabled) {
+            if(!drawMode.isSetting && drawMode.type === 'disabled') {
+                // classes.active = false;
                 classes.disabled = false;
+            }
+        } else {
+            if(classes.active) {
+                if(!drawMode.isSetting && drawMode.type === 'active'){
+                    classes.active = false;
+                    // classes.disabled = false;
+                }
             } else {
-                classes.disabled = drawMode.active;
+                if(drawMode.isSetting && drawMode.type === 'active') {
+                    classes.active = true;
+                    // classes.disabled = false;
+                }
+                if(drawMode.isSetting && drawMode.type === 'disabled') {
+                    // classes.active = false;
+                    classes.disabled = true;
+                }
             }
         }
-
-        // PROBLEMS OCCURRING:
-        //  Erasing a disabled cell then dragging to a non-disabled cell erases the non-disabled one too
-        //  Vice versa: Erasing a non-disabled cell then dragging to a disabled one erases both
-        // ONLY THE INITIAL TYPE SHOULD BE ERASED
-
 
         this.setState({classes: classes});
     }
