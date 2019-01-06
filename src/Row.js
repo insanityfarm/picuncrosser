@@ -14,8 +14,8 @@ class Row extends Component {
         return (
             <tr>
                 <RowHeader header={this.props.header} />
-                {this.props.cells.map((status, i) =>
-                    <Cell key={'cell-'+this.props.num+'-'+i} handlers={this.props.handlers} inputMode={this.props.inputMode} setDrawMode={this.props.setDrawMode} />
+                {this.props.cells.map((classes, i) =>
+                    <Cell key={'cell-'+this.props.num+'-'+i} row={this.props.num} col={i} classes={classes} handlers={this.props.handlers} inputMode={this.props.inputMode} setCellClasses={this.props.setCellClasses} setDrawMode={this.props.setDrawMode} />
                 )}
                 <RowFooter key={'rowfooter-' + (this.props.num + 1)} />
             </tr>

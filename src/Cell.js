@@ -6,13 +6,6 @@ class Cell extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            classes: {
-                cell: true,
-                active: false,
-                disabled: false
-            }
-        };
         this.handleMousedown = this.handleMousedown.bind(this);
         this.handleMouseenter = this.handleMouseenter.bind(this);
         this.draw = this.draw.bind(this);
@@ -20,7 +13,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <td className={classNames(this.state.classes)} onMouseDown={this.handleMousedown} onMouseEnter={this.handleMouseenter} />
+            <td className={classNames(this.props.classes)} onMouseDown={this.handleMousedown} onMouseEnter={this.handleMouseenter} />
         );
     }
 
@@ -37,7 +30,7 @@ class Cell extends Component {
     }
 
     draw() {
-        let classes = this.state.classes;
+        let classes = this.props.classes;
         let drawMode = this.props.inputMode.drawMode;
         if(typeof drawMode === 'undefined') {
             drawMode = {
@@ -64,7 +57,7 @@ class Cell extends Component {
                 break;
             default: break;
         }
-        this.setState({classes: classes});
+        this.props.setCellClasses(this.props.row, this.props.col, classes);
     }
 }
 

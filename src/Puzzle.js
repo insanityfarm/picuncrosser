@@ -50,6 +50,7 @@ class Puzzle extends Component {
         this.handleKeydown      = this.handleKeydown.bind(this);
         this.handleKeyup        = this.handleKeyup.bind(this);
         this.updateStateObject  = this.updateStateObject.bind(this);
+        this.setCellClasses     = this.setCellClasses.bind(this);
         this.setDrawMode        = this.setDrawMode.bind(this);
     }
 
@@ -80,7 +81,7 @@ class Puzzle extends Component {
                 </thead>
                 <tbody>
                     {this.state.rows.map((header, i) =>
-                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} setDrawMode={this.setDrawMode} />
+                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} setCellClasses={this.setCellClasses} setDrawMode={this.setDrawMode} />
                     )}
                 </tbody>
                 <tfoot>
@@ -105,7 +106,8 @@ class Puzzle extends Component {
             }
             for(let j = 0; j < this.state.cols.length; j++) {
                 if(grid[i][j] === undefined) {
-                    grid[i][j] = 0;
+                    // set default classes for every cell in the grid
+                    grid[i][j] = { cell: true, active: false, disabled: false };
                 }
                 grid[i].splice(this.state.cols.length);
             }
@@ -152,6 +154,14 @@ class Puzzle extends Component {
 
     setDrawMode(drawMode) {
         this.updateStateObject('inputMode', 'drawMode', drawMode);
+    }
+
+    setCellClasses(row, col, classes) {
+        let grid = this.state.grid;
+        grid[row][col] = classes;
+        this.setState({
+            grid: grid
+        });
     }
 
     updateStateObject(name, key, value) {
