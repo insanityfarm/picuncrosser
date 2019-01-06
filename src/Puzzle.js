@@ -6,6 +6,10 @@ import ColFooter from "./Footer/ColFooter";
 import RowFooter from "./Footer/RowFooter";
 
 const samples = {
+    helicopter: {
+        rows: [[3,3],[1],[2,5],[1,3,3],[6,2],[7,1],[8],[6],[1,1,1],[7]],
+        cols: [[4],[1,2,1],[3,1],[1,5,1],[1,8],[1,6,1],[2,3,1],[1,2,4],[1,3,2,1],[1,4]]
+    },
     jackolantern: {
         rows: [[1], [3], [8], [10], [2, 3, 1], [2, 1, 1, 1], [10], [2, 1, 1, 1, 1], [2, 1, 1, 1], [6]],
         cols: [[5], [7], [2, 1, 2], [2, 2, 1], [6, 2], [5, 2, 1], [6, 2], [2, 2, 1], [2, 1, 1], [5]]
@@ -29,18 +33,14 @@ class Puzzle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...samples.jackolantern // change this to pre-load different puzzles (temp method)
+            ...samples.helicopter // change this to pre-load different puzzles (temp method)
         };
         this.state.grid = this.prepareGrid();
         this.state.maxColNumberCount = this.getMaxColNumberCount();
         this.state.inputMode = {
             isDrawing:          false,
-            drawMode:           undefined, // object to indicate cells to draw on, and how to draw
-
-            // active: true,  disabled: false
-            // active: false, disabled: false
-            // active: false, disabled: true
-
+            drawMode:           undefined, // object to indicate if drawing/erasing, and whether it's active/disabled
+            // TODO: Implement direction logic, also undo and redo
             direction:          undefined, // where true = vertical, false = horizontal, and undefined = not set
             isModifierActive:   false
         };
