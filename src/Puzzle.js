@@ -11,8 +11,8 @@ const samples = {
         cols: [[4],[1,2,1],[3,1],[1,5,1],[1,8],[1,6,1],[2,3,1],[1,2,4],[1,3,2,1],[1,4]]
     },
     jackolantern: {
-        rows: [[1], [3], [8], [10], [2, 3, 1], [2, 1, 1, 1], [10], [2, 1, 1, 1, 1], [2, 1, 1, 1], [6]],
-        cols: [[5], [7], [2, 1, 2], [2, 2, 1], [6, 2], [5, 2, 1], [6, 2], [2, 2, 1], [2, 1, 1], [5]]
+        rows: [[1],[3],[8],[10],[2,3,1],[2,1,1,1],[10],[2,1,1,1,1],[2,1,1,1],[6]],
+        cols: [[5],[7],[2,1,2],[2,2,1],[6,2],[5,2,1],[6,2],[2,2,1],[2,1,1],[5]]
     },
     rake: {
         rows: [[2],[1,1],[10],[1,1],[2]],
@@ -23,8 +23,8 @@ const samples = {
         cols: [[2],[1,2],[2,3],[2,3],[3,1,1],[2,1,1],[1,1,1,2,2],[1,1,3,1,3],[2,6,4],[3,3,9,1],[5,3,2],[3,1,2,2],[2,1,7],[3,3,2],[2,4],[2,1,2],[2,2,1],[2,2],[1],[1]]
     },
     spray: {
-        rows: [[1], [1, 2, 2], [1, 2], [1, 1, 4], [1, 1, 2], [2, 1], [1, 2], [2, 1], [1, 2], [4]],
-        cols: [[], [1, 1], [1, 1, 1], [1, 1], [1], [7], [3, 1, 1, 1], [4, 1, 2], [7], []]
+        rows: [[1],[1,2,2],[1,2],[1,1,4],[1,1,2],[2,1],[1,2],[2,1],[1,2],[4]],
+        cols: [[],[1,1],[1,1,1],[1,1],[1],[7],[3,1,1,1],[4,1,2],[7],[]]
     }
 };
 
@@ -72,23 +72,23 @@ class Puzzle extends Component {
                 <thead>
                     <tr>
                         <th />
-                        {this.state.cols.map((header, i) => (
+                        {this.state.cols.map((header, i) =>
                             <ColHeader header={header} key={'colheader-'+i} />
-                        ))}
+                        )}
                         <RowFooter key={'rowfooter-0'} />
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.rows.map((header, i) => (
+                    {this.state.rows.map((header, i) =>
                         <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} setDrawMode={this.setDrawMode} />
-                    ))}
+                    )}
                 </tbody>
                 <tfoot>
                     <tr className={'colfooter-row'}>
                         <th />
-                        {this.state.cols.map((header, i) => (
+                        {this.state.cols.map((header, i) =>
                             <ColFooter key={'colfooter-'+i} col={i} />
-                        ))}
+                        )}
                         <ColFooter key={'colfooter-'+this.state.cols.length} col={this.state.cols.length} />
                     </tr>
                 </tfoot>

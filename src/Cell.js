@@ -20,7 +20,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <td scope="cell" className={classNames(this.state.classes)} onMouseDown={this.handleMousedown} onMouseEnter={this.handleMouseenter} />
+            <td className={classNames(this.state.classes)} onMouseDown={this.handleMousedown} onMouseEnter={this.handleMouseenter} />
         );
     }
 
@@ -48,7 +48,7 @@ class Cell extends Component {
         }
         // fancy logic to handle draw mode logic in the most efficient way I know of
         // https://codeburst.io/using-javascript-bitwise-operators-in-real-life-f551a731ff5
-        switch(+drawMode.isDrawing << 3 | +drawMode.isActiveType << 2 | +classes.active << 1 | +classes.disabled) {
+        switch((+drawMode.isDrawing << 3) | (+drawMode.isActiveType << 2) | (+classes.active << 1) | +classes.disabled) {
             case 0b0001:
                 classes.disabled = false;
                 break;
@@ -62,6 +62,7 @@ class Cell extends Component {
             case 0b1100:
                 classes.active = true;
                 break;
+            default: break;
         }
         this.setState({classes: classes});
     }

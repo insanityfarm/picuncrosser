@@ -10,7 +10,7 @@ class Footer extends Component {
 
     render() {
         return (
-            <td scope="cell" className={this.state.className} style={{'--column': this.props.col}} title={'Insert'}></td>
+            <td className={this.state.className} style={{'--column': this.props.col}} title={'Insert'}></td>
         );
     }
 
