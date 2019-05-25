@@ -2,7 +2,7 @@
 import Footer from '../Footer';
 import './RowFooter.css';
 
-class RowFooter extends Footer {
+export default class RowFooter extends Footer {
 
     // constructor(props) {
     //     super(props);
@@ -14,5 +14,3 @@ class RowFooter extends Footer {
     }
 
 }
-
-export default RowFooter;

@@ -4,7 +4,7 @@ import Cell from './Cell';
 import RowFooter from './Footer/RowFooter';
 import './Row.css';
 
-class Row extends Component {
+export default class Row extends Component {
 
     // constructor(props) {
     //     super(props);
@@ -15,7 +15,16 @@ class Row extends Component {
             <tr>
                 <RowHeader header={this.props.header} />
                 {this.props.cells.map((classes, i) =>
-                    <Cell key={'cell-'+this.props.num+'-'+i} row={this.props.num} col={i} classes={classes} handlers={this.props.handlers} inputMode={this.props.inputMode} setCellClasses={this.props.setCellClasses} setDrawMode={this.props.setDrawMode} />
+                    <Cell
+                        key={'cell-'+this.props.num+'-'+i}
+                        row={this.props.num}
+                        col={i}
+                        classes={classes}
+                        handlers={this.props.handlers}
+                        inputMode={this.props.inputMode}
+                        setCellClasses={this.props.setCellClasses}
+                        setDrawMode={this.props.setDrawMode}
+                    />
                 )}
                 <RowFooter key={'rowfooter-' + (this.props.num + 1)} />
             </tr>
@@ -23,5 +32,3 @@ class Row extends Component {
     }
 
 }
-
-export default Row;

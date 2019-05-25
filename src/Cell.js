@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import './Cell.css';
 
-class Cell extends Component {
+export default class Cell extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,11 @@ class Cell extends Component {
 
     render() {
         return (
-            <td className={classNames(this.props.classes)} onMouseDown={this.handleMousedown} onMouseEnter={this.handleMouseenter} />
+            <td
+                className={classNames(this.props.classes)}
+                onMouseDown={this.handleMousedown}
+                onMouseEnter={this.handleMouseenter}
+            />
         );
     }
 
@@ -60,5 +64,3 @@ class Cell extends Component {
         this.props.setCellClasses(this.props.row, this.props.col, classes);
     }
 }
-
-export default Cell;

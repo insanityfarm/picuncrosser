@@ -2,7 +2,7 @@
 import Footer from '../Footer';
 import './ColFooter.css';
 
-class ColFooter extends Footer {
+export default class ColFooter extends Footer {
 
     // constructor(props) {
     //     super(props);
@@ -14,5 +14,3 @@ class ColFooter extends Footer {
     }
 
 }
-
-export default ColFooter;

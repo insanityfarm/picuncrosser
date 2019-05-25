@@ -2,7 +2,7 @@
 import Header from '../Header';
 import './RowHeader.css';
 
-class RowHeader extends Header {
+export default class RowHeader extends Header {
 
     // constructor(props) {
     //     super(props);
@@ -18,5 +18,3 @@ class RowHeader extends Header {
     }
 
 }
-
-export default RowHeader;

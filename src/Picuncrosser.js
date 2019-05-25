@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Picuncrosser.css';
 import Puzzle from './Puzzle.js';
 
-class Picuncrosser extends Component {
+export default class Picuncrosser extends Component {
     render() {
         return (
             <div className="Picuncrosser">
@@ -12,5 +12,3 @@ class Picuncrosser extends Component {
         );
     }
 }
-
-export default Picuncrosser;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
 
-class Header extends Component {
+export default class Header extends Component {
 
     constructor(props) {
         super(props);
@@ -10,7 +10,13 @@ class Header extends Component {
 
     render() {
         return (
-            <th scope="row" className={this.state.className} title={'Delete'}><div title={'Edit'}>{this.renderHeader()}</div></th>
+            <th
+                scope="row"
+                className={this.state.className}
+                title={'Delete'}
+            >
+                <div title={'Edit'}>{this.renderHeader()}</div>
+            </th>
         );
     }
 
@@ -19,5 +25,3 @@ class Header extends Component {
     }
 
 }
-
-export default Header;

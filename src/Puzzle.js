@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ColHeader from './Header/ColHeader';
 import Row from './Row';
-import './Puzzle.css';
 import ColFooter from "./Footer/ColFooter";
 import RowFooter from "./Footer/RowFooter";
+import './Puzzle.css';
 
 const samples = {
     helicopter: {
@@ -28,7 +28,7 @@ const samples = {
     }
 };
 
-class Puzzle extends Component {
+export default class Puzzle extends Component {
 
     constructor(props) {
         super(props);
@@ -69,7 +69,14 @@ class Puzzle extends Component {
     render() {
         // https://www.w3.org/WAI/tutorials/tables/two-headers/#table-with-header-cells-in-the-top-row-and-first-column
         return (
-            <table className="Puzzle" style={{'--number-of-rows': + this.state.rows.length, '--number-of-cols': + this.state.cols.length, '--max-col-number-count': this.state.maxColNumberCount}}>
+            <table
+                className="Puzzle"
+                style={{
+                    '--number-of-rows': + this.state.rows.length,
+                    '--number-of-cols': + this.state.cols.length,
+                    '--max-col-number-count': this.state.maxColNumberCount
+                }}
+            >
                 <thead>
                     <tr>
                         <th />
@@ -81,16 +88,31 @@ class Puzzle extends Component {
                 </thead>
                 <tbody>
                     {this.state.rows.map((header, i) =>
-                        <Row num={i} cells={this.state.grid[i]} header={header} key={'row-'+i} handlers={this.getHandlers()} inputMode={this.state.inputMode} setCellClasses={this.setCellClasses} setDrawMode={this.setDrawMode} />
+                        <Row
+                            num={i}
+                            cells={this.state.grid[i]}
+                            header={header}
+                            key={'row-'+i}
+                            handlers={this.getHandlers()}
+                            inputMode={this.state.inputMode}
+                            setCellClasses={this.setCellClasses}
+                            setDrawMode={this.setDrawMode}
+                        />
                     )}
                 </tbody>
                 <tfoot>
                     <tr className={'colfooter-row'}>
                         <th />
                         {this.state.cols.map((header, i) =>
-                            <ColFooter key={'colfooter-'+i} col={i} />
+                            <ColFooter
+                                key={'colfooter-'+i}
+                                col={i}
+                            />
                         )}
-                        <ColFooter key={'colfooter-'+this.state.cols.length} col={this.state.cols.length} />
+                        <ColFooter
+                            key={'colfooter-'+this.state.cols.length}
+                            col={this.state.cols.length}
+                        />
                     </tr>
                 </tfoot>
             </table>
@@ -171,6 +193,7 @@ class Puzzle extends Component {
     }
 
     getHandlers() {
+        // single handler-containing object to pass to child components
         return {
             mousedown:  this.handleMousedown,
             mouseup:    this.handleMouseup,
@@ -181,5 +204,3 @@ class Puzzle extends Component {
     }
 
 }
-
-export default Puzzle;

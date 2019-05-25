@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Footer.css';
 
-class Footer extends Component {
+export default class Footer extends Component {
 
     constructor(props) {
         super(props);
@@ -10,10 +10,12 @@ class Footer extends Component {
 
     render() {
         return (
-            <td className={this.state.className} style={{'--column': this.props.col}} title={'Insert'}></td>
+            <td
+                className={this.state.className}
+                style={{'--column': this.props.col}}
+                title={'Insert'}
+            />
         );
     }
 
 }
-
-export default Footer;

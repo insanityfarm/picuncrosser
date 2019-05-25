@@ -2,7 +2,7 @@
 import Header from '../Header';
 import './ColHeader.css';
 
-class ColHeader extends Header {
+export default class ColHeader extends Header {
 
     // constructor(props) {
     //     super(props);
@@ -19,5 +19,3 @@ class ColHeader extends Header {
     }
 
 }
-
-export default ColHeader;
